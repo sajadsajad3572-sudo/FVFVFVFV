@@ -2,32 +2,26 @@ name: بناء مكتبة dylib
 
 on:
   push:
-    branches: [ "main" ]  # غيّر إلى "master" إذا كان فرعك الرئيسي كذلك
-  workflow_dispatch:     # تتيح لك تشغيل البناء يدوياً من المتصفح
+    branches: [ "main" ]
+  workflow_dispatch:
 
 jobs:
   build-macos:
-    runs-on: macos-latest   # يحدد أن الخادم سيكون نظام macOS
+    runs-on: macos-latest
 
     steps:
-      # 1. تحميل الكود من المستودع
       - name: سحب الكود المصدر
         uses: actions/checkout@v4
 
-      # 2. (اختياري) عرض محتويات المجلد للتأكد
-      - name: عرض الملفات
+      - name: عرض الملفات للتأكد
         run: ls -la
 
-      # 3. بناء ملف dylib (عدّل الأمر حسب لغتك)
       - name: تجميع المكتبة
         run: |
-          # إذا كان الكود بلغة C
-          gcc -shared -o mylibrary.dylib *.c -fPIC
-          
-          # إذا كان الكود بلغة C++، استخدم هذا السطر بدلاً من السطر أعلاه، وعلّق على السطر السابق:
-          # g++ -shared -o mylibrary.dylib *.cpp -fPIC
+          cd src
+          gcc -shared -o ../mylibrary.dylib *.c -fPIC
+          cd ..
 
-      # 4. رفع الملف الناتج ليصبح قابلاً للتحميل
       - name: رفع الملف
         uses: actions/upload-artifact@v4
         with:
