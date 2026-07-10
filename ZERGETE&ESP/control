@@ -1,0 +1,9 @@
+Package: tm.zergete.com
+Name: SERVER ZERGETE PUBGM 
+Depends: mobilesubstrate
+Version: 1.5.0
+Architecture: iphoneos-arm
+Description: ANTIBAN V-1 SERVER ZERGETE IOS
+Maintainer: NENO
+Author: NENO
+Section: Tweaks
