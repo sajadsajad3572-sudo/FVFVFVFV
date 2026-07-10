@@ -14,12 +14,12 @@ jobs:
         uses: actions/checkout@v4
 
       - name: عرض الملفات للتأكد
-        run: ls -la
+        run: ls -la src/
 
       - name: تجميع المكتبة
         run: |
           cd src
-          gcc -shared -o ../mylibrary.dylib *.c -fPIC
+          g++ -shared -o ../mylibrary.dylib *.cpp *.c -fPIC
           cd ..
 
       - name: رفع الملف
